@@ -29,14 +29,14 @@
   ],
   "main": "app.js",
   "author": "Wolox",
-  "homepage": "https://github.com/kevinderitis/wolox-training",
+  "homepage": "https://github.com/wolox-training/kd-express-js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevinderitis/wolox-training.git"
+    "url": "https://github.com/wolox-training/kd-express-js.git"
   },
   "bugs": {
-    "url": "https://github.com/kevinderitis/wolox-training/issues",
+    "url": "https://github.com/wolox-training/kd-express-js/issues",
     "email": "tls@wolox.com.ar"
   },
   "jest": {
