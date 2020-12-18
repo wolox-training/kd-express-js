@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "WTraining",
   "engines": {
-    "node": "10.14.1",
+    "node": "14.15.2",
     "npm": "6.4.1"
   },
   "scripts": {
@@ -29,7 +29,7 @@
   ],
   "main": "app.js",
   "author": "Wolox",
-  "homepage": "https://github.com/kevinderitis/wolox-training",
+  "homepage": "https://github.com/wolox-training/kd-express-js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -70,11 +70,11 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "express-wolox-logger": "^2.0.0",
+    "express-wolox-logger": "^4.0.1",
     "factory-girl": "^5.0.4",
     "jwt-simple": "^0.5.1",
-    "pg": "^7.4.1",
-    "sequelize": "^5.21.5",
+    "pg": "^8.5.1",
+    "sequelize": "^6.3.5",
     "swagger-ui-express": "^4.0.7",
     "umzug": "^2.1.0"
   },
