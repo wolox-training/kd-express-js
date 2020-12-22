@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      firstName: {
+      first_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      lastName: {
+      last_name: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -23,8 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      createdAt: { allowNull: false, type: DataTypes.DATE },
-      updatedAt: { allowNull: false, type: DataTypes.DATE }
+      created_at: { allowNull: false, type: DataTypes.DATE },
+      update_at: { allowNull: false, type: DataTypes.DATE }
     },
     { timestamps: true }
   );
