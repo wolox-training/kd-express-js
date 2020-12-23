@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       createdAt: { allowNull: false, type: DataTypes.DATE },
-      updateAt: { allowNull: false, type: DataTypes.DATE }
+      updatedAt: { type: DataTypes.DATE }
     },
     { timestamps: true, underscored: true }
   );

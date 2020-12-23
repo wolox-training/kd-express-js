@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const { signup } = require('../services/userService');
 
 exports.signup = (req, res) => {
