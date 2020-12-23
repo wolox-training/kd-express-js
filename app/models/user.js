@@ -1,11 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    'users',
+    'User',
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
       },
       firstName: {
         type: DataTypes.STRING,
@@ -27,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       createdAt: { allowNull: false, type: DataTypes.DATE },
       updateAt: { allowNull: false, type: DataTypes.DATE }
     },
-    { timestamps: true }
+    { timestamps: true, underscored: true }
   );
 
   return User;
