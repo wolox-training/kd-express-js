@@ -25,21 +25,17 @@ const passwordValidation = pass => {
   return false;
 };
 
-const encryptPass = password => {
-  bcrypt
-    .genSalt(10)
-    .then(salts => {
-      bcrypt.hash(password, salts).then(hash => hash);
-    })
-    .catch(err => err);
-};
-
 exports.signup = (req, res) => {
   if (req.body && emailValidation(req.body.email) && passwordValidation(req.body.password)) {
-    req.body.password = encryptPass(req.body.password);
-    console.log(req.body);
+    req.body.password = bcrypt.hashSync(req.body.password, 10);
     signup(req.body)
-      .then(sign => res.status(200).send(`User ${sign} created.`))
+      .then(sign => {
+        if (sign.firstName) {
+          res.status(200).send(`User ${sign.firstName} created.`);
+        } else {
+          res.status(400).send('There is an existing user with that email');
+        }
+      })
       .catch(err => err);
-  } else res.status(400).send('Check email, password');
+  } else res.status(400).send('Check wolox domain email or password length');
 };
