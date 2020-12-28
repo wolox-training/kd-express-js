@@ -29,6 +29,7 @@ const passwordValidation = pass => {
 
 exports.signup = async (req, res) => {
   if (req.body && (await emailValidation(req.body.email)) && passwordValidation(req.body.password)) {
+    // eslint-disable-next-line require-atomic-updates
     req.body.password = bcrypt.hashSync(req.body.password, 10);
     signup(req.body)
       .then(sign => {
