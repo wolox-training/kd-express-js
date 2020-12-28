@@ -1,9 +1,11 @@
 const bcrypt = require('bcrypt');
+const { User } = require('../models');
 const { signup } = require('../services/userService');
 
-const emailValidation = email => {
+const emailValidation = async email => {
   const val = email.split('@');
-  if (val[1] === 'wolox.com.ar') {
+  const usr = await User.findAll({ where: { email } });
+  if (val[1] === 'wolox.com.ar' && usr.length === 0) {
     return true;
   }
   return false;
@@ -25,15 +27,15 @@ const passwordValidation = pass => {
   return false;
 };
 
-exports.signup = (req, res) => {
-  if (req.body && emailValidation(req.body.email) && passwordValidation(req.body.password)) {
+exports.signup = async (req, res) => {
+  if (req.body && (await emailValidation(req.body.email)) && passwordValidation(req.body.password)) {
     req.body.password = bcrypt.hashSync(req.body.password, 10);
     signup(req.body)
       .then(sign => {
         if (sign.firstName) {
           res.status(200).send(`User ${sign.firstName} created.`);
         } else {
-          res.status(400).send('There is an existing user with that email');
+          res.status(400).send('Database error. User not created');
         }
       })
       .catch(err => err);
