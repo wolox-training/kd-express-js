@@ -14,3 +14,6 @@ exports.validationError = message => internalError(message, exports.VALIDATION_E
 
 exports.MAIL_DOMAIN_ERROR = 'mail_domain_error';
 exports.mailDomainError = message => internalError(message, exports.MAIL_DOMAIN_ERROR);
+
+exports.MAIL_EXIST_ERROR = 'mail_exist_error';
+exports.mailExistError = message => internalError(message, exports.MAIL_EXIST_ERROR);

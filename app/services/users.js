@@ -9,6 +9,10 @@ const signup = user =>
       return usr;
     })
     .catch(err => {
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        logger.info('Existing email');
+        throw error.mailExistError('Entered email already exists');
+      }
       throw error.databaseError(err);
     });
 

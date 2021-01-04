@@ -13,13 +13,17 @@ describe('User Creation', () => {
     expect(res.body.email).toEqual(user.email);
     done();
   });
-  // Este metodo devuelve un 201 pero deberia devolver 422. Revisar controllers
   it('should throw an error for existing user', async done => {
     const user = mockUser;
+    await request(app)
+      .post('/users')
+      .send(user);
+    user.id = 9;
     const res = await request(app)
       .post('/users')
       .send(user);
-    expect(res.status).toEqual(400);
+    expect(res.status).toEqual(422);
+    expect(res.body.internal_code).toEqual('mail_exist_error');
     done();
   });
 
