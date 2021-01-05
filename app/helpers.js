@@ -1,3 +1,3 @@
 const bcrypt = require('bcrypt');
 
-exports.crypt = pass => bcrypt.hashSync(pass, 10);
+exports.crypt = pass => bcrypt.hashSync(pass, process.env.SALT_BCRYPT);
