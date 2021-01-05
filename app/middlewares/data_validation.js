@@ -12,12 +12,11 @@ const checkValidationResult = (request, _, next) => {
 };
 
 exports.validateUser = (request, _, next) => {
-  console.log(request.params.id);
-  console.log(request.params.id === 1);
-  if (request.params.id) {
-    return next(errors.validationError);
+  // eslint-disable-next-line eqeqeq
+  if (request.params.id == 1) {
+    return next();
   }
-  return next();
+  return next(errors.validationError('Not authorized user'));
 };
 
 exports.validateSchema = schema => checkSchema(schema);
