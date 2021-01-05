@@ -11,6 +11,15 @@ const checkValidationResult = (request, _, next) => {
   return next();
 };
 
+exports.validateUser = (request, _, next) => {
+  console.log(request.params.id);
+  console.log(request.params.id === 1);
+  if (request.params.id) {
+    return next(errors.validationError);
+  }
+  return next();
+};
+
 exports.validateSchema = schema => checkSchema(schema);
 
 exports.validateSchemaAndFail = schema => [exports.validateSchema(schema), checkValidationResult];
