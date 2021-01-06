@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const logger = require('../logger');
 const error = require('../errors');
@@ -25,7 +26,8 @@ const signin = user =>
   })
     .then(usr => {
       if (decrypt(user.password, usr[0].password)) {
-        console.log('pasa por aca')
+        const tkn = jwt.sign(usr, 'shhhh');
+        console.log('pasa por aca');
         return usr;
       }
       throw error.databaseError('Otro');
