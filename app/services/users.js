@@ -32,6 +32,7 @@ const signin = user =>
       throw error.databaseError('Otro');
     })
     .catch(err => {
+      logger.info('Database error');
       throw error.databaseError('este', err);
     });
 
