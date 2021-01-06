@@ -8,7 +8,8 @@ const statusCodes = {
   [errors.DEFAULT_ERROR]: 500,
   [errors.VALIDATION_ERROR]: 422,
   [errors.MAIL_DOMAIN_ERROR]: 422,
-  [errors.MAIL_EXIST_ERROR]: 422
+  [errors.MAIL_EXIST_ERROR]: 422,
+  [errors.EXTERNAL_API_ERROR]: 500
 };
 
 exports.handle = (error, req, res, next) => {

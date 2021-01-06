@@ -44,6 +44,12 @@ const config = {
       apiDate: process.env.API_DATE || 'X-API-Date',
       packageVersion: process.env.PACKAGE_VERSION || 'X-Package-Version',
       nodeVersion: process.env.NODE_VERSION || 'X-Node-Version'
+    },
+    apigeek: {
+      urlBase: process.env.URL_GEEK
+    },
+    bcrypt: {
+      salt: process.env.SALT_BCRYPT
     }
   }
 };
