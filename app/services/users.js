@@ -26,9 +26,8 @@ const signin = user =>
   })
     .then(usr => {
       if (decrypt(user.password, usr[0].password)) {
-        const tkn = jwt.sign(usr, 'shhhh');
-        console.log('pasa por aca');
-        return usr;
+        const token = jwt.sign({ usr }, 'shhhh');
+        return token;
       }
       throw error.databaseError('Otro');
     })
