@@ -1,3 +1,4 @@
 const bcrypt = require('bcrypt');
+const config = require('../config').common;
 
-exports.crypt = pass => bcrypt.hashSync(pass, process.env.SALT_BCRYPT);
+exports.crypt = pass => bcrypt.hashSync(pass, parseInt(config.bcrypt.salt));

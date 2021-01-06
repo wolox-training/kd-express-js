@@ -4,6 +4,6 @@ const { crypt } = require('../helpers');
 exports.users = (req, res, next) => {
   req.body.password = crypt(req.body.password);
   signup(req.body)
-    .then(sign => res.status(201).send(sign))
+    .then(user => res.status(201).send(user))
     .catch(next);
 };

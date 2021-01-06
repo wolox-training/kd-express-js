@@ -47,6 +47,9 @@ const config = {
     },
     apigeek: {
       urlBase: process.env.URL_GEEK
+    },
+    bcrypt: {
+      salt: process.env.SALT_BCRYPT
     }
   }
 };
