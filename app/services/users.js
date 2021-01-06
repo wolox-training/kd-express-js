@@ -1,6 +1,7 @@
 const { User } = require('../models');
 const logger = require('../logger');
 const error = require('../errors');
+const { decrypt } = require('../helpers');
 
 const signup = user =>
   User.create(user)
@@ -16,4 +17,21 @@ const signup = user =>
       throw error.databaseError(err);
     });
 
-module.exports = { signup };
+const signin = user =>
+  User.findAll({
+    where: {
+      email: user.email
+    }
+  })
+    .then(usr => {
+      if (decrypt(user.password, usr[0].password)) {
+        console.log('pasa por aca')
+        return usr;
+      }
+      throw error.databaseError('Otro');
+    })
+    .catch(err => {
+      throw error.databaseError('este', err);
+    });
+
+module.exports = { signup, signin };
