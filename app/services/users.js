@@ -25,15 +25,18 @@ const signin = user =>
     }
   })
     .then(usr => {
+      if (usr.length === 0) {
+        return error.invalidUserError('Non-existent user');
+      }
       if (decrypt(user.password, usr[0].password)) {
         const token = jwt.sign({ usr }, 'shhhh');
         return token;
       }
-      throw error.databaseError('Otro');
+      return error.invalidPassError('Invalid password');
     })
     .catch(err => {
       logger.info('Database error');
-      throw error.databaseError('este', err);
+      throw error.databaseError('Database error', err);
     });
 
 module.exports = { signup, signin };

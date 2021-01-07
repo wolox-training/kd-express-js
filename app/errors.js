@@ -16,5 +16,12 @@ exports.mailDomainError = message => internalError(message, exports.MAIL_DOMAIN_
 
 exports.MAIL_EXIST_ERROR = 'mail_exist_error';
 exports.mailExistError = message => internalError(message, exports.MAIL_EXIST_ERROR);
+
 exports.EXTERNAL_API_ERROR = 'external_api_error';
 exports.externalApiError = message => internalError(message, exports.EXTERNAL_API_ERROR);
+
+exports.INVALID_USER_ERROR = 'invalid_user_error';
+exports.invalidUserError = message => internalError(message, exports.INVALID_USER_ERROR);
+
+exports.INVALID_PASS_ERROR = 'invalid_pass_error';
+exports.invalidPassError = message => internalError(message, exports.INVALID_PASS_ERROR);
