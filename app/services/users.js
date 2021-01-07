@@ -30,7 +30,7 @@ const signin = user =>
       }
       if (decrypt(user.password, usr[0].password)) {
         const token = jwt.sign({ usr }, 'shhhh');
-        return token;
+        return { token };
       }
       return error.invalidPassError('Invalid password');
     })

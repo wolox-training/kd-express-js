@@ -46,3 +46,17 @@ describe('User Creation', () => {
     done();
   });
 });
+
+describe('User login', () => {
+  it('should return login token', async done => {
+    const user = mockUser;
+    await request(app)
+      .post('/users')
+      .send(user);
+    const res = await request(app)
+      .post('/users/sessions')
+      .send(user);
+    expect(res).not.toStrictEqual({ toke: '' });
+    done();
+  });
+});
