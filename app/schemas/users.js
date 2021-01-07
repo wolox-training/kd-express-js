@@ -5,27 +5,27 @@ exports.createUser = {
   firstName: {
     in: ['body'],
     exists: {
-      errorMessage: 'Empty firstname'
+      errorMessage: 'Empty firstName'
     },
     isLength: {
       options: {
         min: 1,
         max: 30
       },
-      errorMessage: 'firstName must have more than one character and less than 30'
+      errorMessage: 'FirstName must have more than one character and less than 30'
     }
   },
   lastName: {
     in: ['body'],
     exists: {
-      errorMessage: 'Empty lastname'
+      errorMessage: 'Empty lastName'
     },
     isLength: {
       options: {
         min: 1,
         max: 30
       },
-      errorMessage: 'lastname must have more than one character and less than 30'
+      errorMessage: 'LastName must have more than one character and less than 30'
     }
   },
   password: {
@@ -37,13 +37,13 @@ exports.createUser = {
       options: {
         min: 8
       },
-      errorMessage: 'password must have more than 8 characters'
+      errorMessage: 'Password must have more than 8 characters'
     }
   },
   email: {
     in: ['body'],
     exists: {
-      errorMessage: 'Empty mail'
+      errorMessage: 'Empty email'
     },
     isEmail: true,
     custom: {
