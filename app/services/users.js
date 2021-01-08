@@ -27,17 +27,17 @@ const signin = user =>
     .then(usr => {
       if (usr.length === 0) {
         // Change return
-        return error.invalidUserError('Non-existent user');
+        throw error.invalidUserError('Non-existent user');
       }
       if (decrypt(user.password, usr[0].password)) {
         const token = jwt.sign({ usr }, 'shhhh');
         return { token };
       }
-      return error.invalidPassError('Invalid password');
+      throw error.invalidPassError('Invalid password');
     })
     .catch(err => {
       logger.info('Database error');
-      throw error.databaseError('Database error', err);
+      throw err;
     });
 
 module.exports = { signup, signin };
