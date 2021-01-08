@@ -9,5 +9,5 @@ exports.users = (req, res, next) => {
 };
 
 exports.middleTest = (req, res) => {
-  res.send('Hola mundo');
+  res.send('Hello World');
 };
