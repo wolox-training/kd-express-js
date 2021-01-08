@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
-const { mockUser } = require('./mocks/users');
+const { mockUser, mockUserInexistent } = require('./mocks/users');
 
 describe('User Creation', () => {
   it('should create an user successfuly', async done => {
@@ -50,13 +50,24 @@ describe('User Creation', () => {
 describe('User login', () => {
   it('should return login token', async done => {
     const user = mockUser;
+    user.password = 'contrasena22';
     await request(app)
       .post('/users')
       .send(user);
     const res = await request(app)
       .post('/users/sessions')
       .send(user);
-    expect(res).not.toStrictEqual({ toke: '' });
+    expect(res.status).toEqual(201);
+    expect(res.body).toHaveProperty('token');
+    done();
+  });
+  it('should return non-existing mail', async done => {
+    const user = mockUserInexistent;
+    const res = await request(app)
+      .post('/users/sessions')
+      .send(user);
+    // expect(res.status).toEqual(422);
+    expect(res).toEqual('');
     done();
   });
 });

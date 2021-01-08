@@ -26,6 +26,7 @@ const signin = user =>
   })
     .then(usr => {
       if (usr.length === 0) {
+        // Change return
         return error.invalidUserError('Non-existent user');
       }
       if (decrypt(user.password, usr[0].password)) {
