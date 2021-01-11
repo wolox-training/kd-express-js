@@ -9,7 +9,9 @@ const statusCodes = {
   [errors.VALIDATION_ERROR]: 422,
   [errors.MAIL_DOMAIN_ERROR]: 422,
   [errors.MAIL_EXIST_ERROR]: 422,
-  [errors.EXTERNAL_API_ERROR]: 500
+  [errors.EXTERNAL_API_ERROR]: 500,
+  [errors.INVALID_USER_ERROR]: 401,
+  [errors.INVALID_PASS_ERROR]: 401
 };
 
 exports.handle = (error, req, res, next) => {

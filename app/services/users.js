@@ -1,6 +1,8 @@
+const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const logger = require('../logger');
 const error = require('../errors');
+const { decrypt } = require('../helpers');
 
 const signup = user =>
   User.create(user)
@@ -16,4 +18,26 @@ const signup = user =>
       throw error.databaseError(err);
     });
 
-module.exports = { signup };
+const signin = user =>
+  User.findAll({
+    where: {
+      email: user.email
+    }
+  })
+    .then(usr => {
+      if (usr.length === 0) {
+        // Change return
+        throw error.invalidUserError('Non-existent user');
+      }
+      if (decrypt(user.password, usr[0].password)) {
+        const token = jwt.sign({ usr }, 'shhhh');
+        return { token };
+      }
+      throw error.invalidPassError('Invalid password');
+    })
+    .catch(err => {
+      logger.info('Database error');
+      throw err;
+    });
+
+module.exports = { signup, signin };
