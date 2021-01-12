@@ -50,6 +50,9 @@ const config = {
     },
     bcrypt: {
       salt: process.env.SALT_BCRYPT
+    },
+    jwt: {
+      secret: process.env.JWT_SECRET
     }
   }
 };

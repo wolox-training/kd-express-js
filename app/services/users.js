@@ -26,7 +26,6 @@ const signin = user =>
   })
     .then(usr => {
       if (usr.length === 0) {
-        // Change return
         throw error.invalidUserError('Non-existent user');
       }
       if (decrypt(user.password, usr[0].password)) {
@@ -40,4 +39,12 @@ const signin = user =>
       throw err;
     });
 
-module.exports = { signup, signin };
+const getusers = () =>
+  User.findAll()
+    .then(usr => usr)
+    .catch(err => {
+      logger.info('Database error');
+      throw err;
+    });
+
+module.exports = { signup, signin, getusers };
