@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken');
 
 exports.validateToken = (req, res, next) => {
-  const { token } = req.headers;
-  if (token) {
+  const bearerHeader = req.headers.authorization;
+  if (typeof bearerHeader !== 'undefined') {
+    const bearer = bearerHeader.split(' ');
+    const token = bearer[1];
     const decoded = jwt.verify(token, 'shhhh');
     if (decoded) {
       return next();

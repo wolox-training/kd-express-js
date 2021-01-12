@@ -83,3 +83,31 @@ describe('User login', () => {
     done();
   });
 });
+
+describe('Get users', () => {
+  it('should return users list', async done => {
+    const user = mockUser;
+    user.password = 'contrasena22';
+    await request(app)
+      .post('/users')
+      .send(user);
+    const resToken = await request(app)
+      .post('/users/sessions')
+      .send(user);
+    const res = await request(app)
+      .get('/users')
+      .set('Authorization', `Bearer ${resToken.body.token}`);
+
+    expect(res.status).toEqual(200);
+    expect(res.body[0]).toHaveProperty('email');
+    done();
+  });
+  it('should return invalid token error', async done => {
+    const res = await request(app)
+      .get('/users')
+      .set('Authorization', 'Bearer sfafa5safasfafak');
+
+    expect(res.status).toEqual(500);
+    done();
+  });
+});
