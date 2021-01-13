@@ -3,15 +3,15 @@ module.exports = {
     type: 'integer',
     example: 7
   },
-  userFirstName: {
+  firstName: {
     type: 'string',
     example: 'Tomas'
   },
-  userLastName: {
+  lastName: {
     type: 'string',
     example: 'Smith'
   },
-  userEmail: {
+  email: {
     type: 'string',
     example: 'tom.smith@wolox.com.ar'
   },
@@ -26,13 +26,13 @@ module.exports = {
         $ref: '#/components/schemas/userId'
       },
       firstName: {
-        $ref: '#/components/schemas/userFirstName'
+        $ref: '#/components/schemas/firstName'
       },
       lastName: {
-        $ref: '#/components/schemas/userLastName'
+        $ref: '#/components/schemas/lastName'
       },
       email: {
-        $ref: '#/components/schemas/userEmail'
+        $ref: '#/components/schemas/email'
       },
       password: {
         $ref: '#/components/schemas/userPassword'
