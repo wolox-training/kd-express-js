@@ -11,6 +11,14 @@ const checkValidationResult = (request, _, next) => {
   return next();
 };
 
+exports.validateUser = (request, _, next) => {
+  // eslint-disable-next-line eqeqeq
+  if (request.params.id === 1) {
+    return next();
+  }
+  return next(errors.validationError('Not authorized user'));
+};
+
 exports.validateSchema = schema => checkSchema(schema);
 
 exports.validateSchemaAndFail = schema => [exports.validateSchema(schema), checkValidationResult];
