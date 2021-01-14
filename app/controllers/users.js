@@ -15,8 +15,14 @@ exports.signin = (req, res, next) => {
 };
 
 exports.userlist = (req, res, next) => {
-  const offset = Math.ceil(0 + [(req.query.page - 1) * req.query.limit]);
-  getusers(req.query.limit, offset)
+  let offset = 0;
+  let lim = 10;
+
+  if (req.query.limit && req.query.page) {
+    offset = Math.ceil(0 + [(req.query.page - 1) * req.query.limit]);
+    lim = req.query.limit;
+  }
+  getusers(lim, offset)
     .then(user => res.status(200).send(user))
     .catch(next);
 };
