@@ -15,7 +15,8 @@ exports.signin = (req, res, next) => {
 };
 
 exports.userlist = (req, res, next) => {
-  getusers()
+  const offset = Math.ceil(0 + [(req.query.page - 1) * req.query.limit]);
+  getusers(req.query.limit, offset)
     .then(user => res.status(200).send(user))
     .catch(next);
 };

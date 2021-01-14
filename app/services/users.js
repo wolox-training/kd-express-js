@@ -39,8 +39,11 @@ const signin = user =>
       throw err;
     });
 
-const getusers = () =>
-  User.findAll()
+const getusers = (limit, offset) =>
+  User.findAll({
+    limit,
+    offset
+  })
     .then(usr => usr)
     .catch(err => {
       logger.info('Database error');
